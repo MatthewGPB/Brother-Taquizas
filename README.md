@@ -14,12 +14,16 @@ brothers-taquizas-site/
 ├── sitemap.xml       ← SEO: list of pages
 ├── vercel.json       ← Vercel config (clean URLs, cache headers)
 ├── .gitignore        ← Files Git ignores
-└── README.md         ← This file
+├── README.md         ← This file
+├── images/           ← All site photos (drop yours in here — see images/README.md)
+│   └── README.md
+└── menu/             ← Menu PDF
+    └── README.md
 ```
 
 ---
 
-## Deploy in 6 steps (about 20 minutes)
+## Deploy in 8 steps (about 25 minutes)
 
 ### Step 1 — Install the tools (one time)
 
@@ -45,7 +49,31 @@ GitHub will show you a page with commands. Keep that tab open for Step 4.
 
 Unzip `brothers-taquizas-site.zip` somewhere easy to find — like your Desktop or Documents folder.
 
-### Step 4 — Push the files to GitHub
+### Step 4 — Add the images
+
+The project ships with empty `images/` and `menu/` folders. Before pushing, drop the actual photos and menu PDF in.
+
+Open [`images/README.md`](./images/README.md) — it has a download link for every photo currently on the Shopify CDN, plus the filename each one should be saved as. Same for [`menu/README.md`](./menu/README.md) for the PDF.
+
+Short version: right-click each link → "Save image as…" → save into the `images/` folder with the exact filename shown.
+
+The 7 files you need in `images/`:
+
+- `food-truck.png`
+- `birria-taco.jpg`
+- `fajitas-supreme.jpg`
+- `cheesiest-quesadilla.jpg`
+- `al-pastor-spread.webp`
+- `happy-customers.webp`
+- `family.jpg`
+
+And the 1 file in `menu/`:
+
+- `brothers-taquizas-menu.pdf`
+
+Open `index.html` in your browser (just double-click it) to verify all 7 photos load correctly before continuing.
+
+### Step 5 — Push the files to GitHub
 
 Open Terminal (Mac) or PowerShell (Windows) and run these one at a time. Replace `YOUR-USERNAME` with your actual GitHub username:
 
@@ -61,7 +89,7 @@ git push -u origin main
 
 It'll ask you to log in to GitHub the first time. Done — refresh your GitHub repo page and all the files will be there.
 
-### Step 5 — Set up the catering form (Formspree)
+### Step 6 — Set up the catering form (Formspree)
 
 The catering form needs a backend to actually send emails. Use **Formspree** (free for 50 submissions/month, plenty for a food truck):
 
@@ -89,7 +117,7 @@ git commit -m "Add Formspree form ID"
 git push
 ```
 
-### Step 6 — Deploy to Vercel
+### Step 7 — Deploy to Vercel
 
 1. Go to https://vercel.com/new
 2. Click **Import** next to your `brothers-taquizas-site` repo
@@ -98,7 +126,7 @@ git push
 
 About 30 seconds later you'll get a live URL like `brothers-taquizas-site.vercel.app`. The site is live.
 
-### Step 7 — Hook up brotherstaquizas.com
+### Step 8 — Hook up brotherstaquizas.com
 
 1. In Vercel, open your project → **Settings → Domains**
 2. Type `brotherstaquizas.com` and click **Add**
@@ -151,13 +179,17 @@ Or, even easier — edit files **directly on GitHub.com** (click the pencil icon
 
 ## Images
 
-All photos currently load from your Shopify CDN URLs (the food truck, family photo, dish shots). They'll keep working as long as those Shopify URLs exist.
+All photos load from the `/images/` folder in this project. Before deploying for the first time, you need to drop the actual files in there — see [`images/README.md`](./images/README.md) for the filename list and download links to the originals.
 
-**To switch to self-hosted images later:**
-1. Create an `images/` folder in the project
-2. Drop the JPGs/WebPs in there
-3. In `index.html`, change image `src` from `https://cdn.shopify.com/...` to `/images/yourfile.jpg`
-4. Commit + push
+**To change a photo later:**
+1. Drop the new file into `/images/` with the same filename (e.g. replace `birria-taco.jpg` with a new shot)
+2. Commit and push
+3. Vercel redeploys with the new image — no HTML changes needed
+
+**To add a new photo somewhere on the page:**
+1. Save it to `/images/` with a descriptive filename (e.g. `street-tacos.webp`)
+2. In `index.html`, reference it as `<img src="/images/street-tacos.webp" alt="...">`
+3. Commit and push
 
 ---
 
