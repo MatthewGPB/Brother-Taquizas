@@ -153,15 +153,12 @@ a:hover { color: var(--bt-terracotta-dark); }
   text-decoration: none;
   font-weight: 700;
 }
-.brand-mark {
-  width: 36px; height: 36px;
-  background: var(--bt-terracotta);
-  color: var(--bt-cream);
-  border: 2px solid var(--bt-charred);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--bt-font-display);
-  font-size: 0.95rem;
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  display: block;
+  object-fit: contain;
+  border-radius: 4px;
 }
 .brand-name {
   font-family: var(--bt-font-display);

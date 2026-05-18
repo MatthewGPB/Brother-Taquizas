@@ -57,8 +57,9 @@ Open [`images/README.md`](./images/README.md) — it has a download link for eve
 
 Short version: right-click each link → "Save image as…" → save into the `images/` folder with the exact filename shown.
 
-The 7 files you need in `images/`:
+The 8 files you need in `images/`:
 
+- `bt-logo.webp`
 - `food-truck.png`
 - `birria-taco.jpg`
 - `fajitas-supreme.jpg`
