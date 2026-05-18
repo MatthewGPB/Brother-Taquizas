@@ -485,10 +485,7 @@ a:hover { color: var(--bt-terracotta-dark); }
   position: relative;
   z-index: 1;
   width: 100%;
-  aspect-ratio: 2/3;
-  object-fit: contain;
-  object-position: center center;
-  background: var(--bt-cream-deep);
+  height: auto;
   border: 3px solid var(--bt-charred);
   display: block;
 }
