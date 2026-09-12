@@ -201,3 +201,42 @@ All photos load from the `/images/` folder in this project. Before deploying for
 - **Formspree docs:** https://help.formspree.io
 
 The whole setup is designed so you don't need a developer for normal edits. Text changes especially — open the file, change the words, commit.
+
+---
+
+## Language Switching (EN ↔ ES)
+
+The site includes a language toggle in the header (**EN / ES** pill switch). When a visitor clicks it, every piece of translatable text on the page swaps between English and Spanish. The choice is remembered across pages and future visits via localStorage. Spanish-speaking browsers (Chrome/Safari set to `es-*`) also auto-default to Spanish on first visit.
+
+### How it works
+
+- **`i18n-dict.js`** — a big JavaScript object mapping every English phrase to its Spanish translation. Edit this file to fix a translation or add a new phrase.
+- **`i18n.js`** — the runtime. Walks the DOM once on load, finds text nodes matching any key in the dictionary, and swaps them when you toggle.
+- The toggle button lives in the header (`<div class="lang-toggle">`) and its style is at the bottom of `styles.css`.
+
+### Adding a new phrase
+
+If you add new English copy somewhere on the site and want it translated:
+
+1. Open `i18n-dict.js`
+2. Add a new line inside the object:
+   ```js
+   "Your new English phrase": "Tu nueva frase en español",
+   ```
+3. Commit + push. Done.
+
+### Excluding text from translation
+
+If some text (an address, a phone number, a brand name) should never be translated, add `data-no-i18n` to that element or a parent:
+
+```html
+<p data-no-i18n>Brothers Taquizas</p>
+```
+
+The runtime skips anything under `data-no-i18n`.
+
+### Notes
+
+- The English HTML is what search engines see, so SEO is unchanged.
+- The `lang` attribute on `<html>` updates automatically (`en` or `es`) when the toggle is clicked — good for accessibility and screen readers.
+- Form placeholders, select options, and the page title/meta description also swap.

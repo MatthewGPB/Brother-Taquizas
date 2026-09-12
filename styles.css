@@ -768,3 +768,43 @@ a:hover { color: var(--bt-terracotta-dark); }
   font-size: 0.85rem;
   opacity: 0.7;
 }
+
+/* ============================================================
+   Language toggle (EN / ES pill switch)
+   ============================================================ */
+.lang-toggle {
+  display: inline-flex;
+  background: var(--bt-cream-deep);
+  border: 2px solid var(--bt-charred);
+  border-radius: 999px;
+  padding: 2px;
+  gap: 2px;
+  margin-right: 12px;
+}
+.lang-toggle button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--bt-charred);
+  font-family: var(--bt-font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  min-width: 34px;
+  line-height: 1;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.lang-toggle button:hover {
+  background: rgba(194, 70, 26, 0.15);
+}
+.lang-toggle button[aria-pressed="true"] {
+  background: var(--bt-terracotta);
+  color: var(--bt-cream);
+}
+@media (max-width: 800px) {
+  .lang-toggle { margin-right: 8px; }
+  .lang-toggle button { padding: 5px 10px; font-size: 0.72rem; }
+}
