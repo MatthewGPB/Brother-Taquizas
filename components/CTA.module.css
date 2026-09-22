@@ -1,0 +1,49 @@
+.cta {
+  background: var(--ink-900);
+  color: var(--white);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(29,158,117,0.18) 0%, transparent 60%);
+}
+.inner { position: relative; z-index: 1; }
+.h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(36px, 5.5vw, 60px);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+.h2 em { color: var(--coral-500); font-style: italic; }
+.sub {
+  font-size: 19px;
+  color: rgba(255,255,255,0.7);
+  max-width: 580px;
+  margin: 0 auto 36px;
+  line-height: 1.55;
+}
+.actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.meta {
+  margin-top: 28px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.meta span::before { content: "✓ "; color: var(--palm-500); margin-right: 4px; }
+
+.capacity {
+  margin-top: 22px;
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.75);
+  font-style: italic;
+}

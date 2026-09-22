@@ -1,242 +1,29 @@
-# Brothers Taquizas — Website
+# Grow Palm Beach — Website v2
 
-A fast, SEO-optimized one-page site for [brotherstaquizas.com](https://brotherstaquizas.com).
-Static HTML/CSS/JS — no framework, no build step. Hosted free on Vercel, version-controlled on GitHub.
+Next.js 15 site with three-tier pricing, AI-optimization positioning, and founder-led voice. Deployed on Vercel.
 
-## File structure
-
-```
-brothers-taquizas-site/
-├── index.html        ← The whole page
-├── styles.css        ← All styles
-├── script.js         ← Mobile menu + AJAX form
-├── robots.txt        ← SEO: tells crawlers what to index
-├── sitemap.xml       ← SEO: list of pages
-├── vercel.json       ← Vercel config (clean URLs, cache headers)
-├── .gitignore        ← Files Git ignores
-├── README.md         ← This file
-├── images/           ← All site photos (drop yours in here — see images/README.md)
-│   └── README.md
-└── menu/             ← Menu PDF
-    └── README.md
-```
-
----
-
-## Deploy in 8 steps (about 25 minutes)
-
-### Step 1 — Install the tools (one time)
-
-You need three things installed on your computer:
-
-1. **Git** — https://git-scm.com/downloads (just click through the installer)
-2. **A GitHub account** — https://github.com/signup (free)
-3. **A Vercel account** — https://vercel.com/signup (sign up *with GitHub* — it links them automatically)
-
-That's it. No Node.js, no Shopify CLI, nothing else.
-
-### Step 2 — Create a GitHub repo
-
-1. Go to https://github.com/new
-2. **Repository name:** `brothers-taquizas-site`
-3. **Public** (so Vercel's free plan can deploy it)
-4. Leave everything else unchecked
-5. Click **Create repository**
-
-GitHub will show you a page with commands. Keep that tab open for Step 4.
-
-### Step 3 — Get the files onto your computer
-
-Unzip `brothers-taquizas-site.zip` somewhere easy to find — like your Desktop or Documents folder.
-
-### Step 4 — Add the images
-
-The project ships with empty `images/` and `menu/` folders. Before pushing, drop the actual photos and menu PDF in.
-
-Open [`images/README.md`](./images/README.md) — it has a download link for every photo currently on the Shopify CDN, plus the filename each one should be saved as. Same for [`menu/README.md`](./menu/README.md) for the PDF.
-
-Short version: right-click each link → "Save image as…" → save into the `images/` folder with the exact filename shown.
-
-The 8 files you need in `images/`:
-
-- `bt-logo.webp`
-- `food-truck.png`
-- `birria-taco.jpg`
-- `fajitas-supreme.jpg`
-- `cheesiest-quesadilla.jpg`
-- `al-pastor-spread.webp`
-- `happy-customers.webp`
-- `family.jpg`
-
-And the 1 file in `menu/`:
-
-- `brothers-taquizas-menu.pdf`
-
-Open `index.html` in your browser (just double-click it) to verify all 7 photos load correctly before continuing.
-
-### Step 5 — Push the files to GitHub
-
-Open Terminal (Mac) or PowerShell (Windows) and run these one at a time. Replace `YOUR-USERNAME` with your actual GitHub username:
+## Quick start
 
 ```bash
-cd ~/Desktop/brothers-taquizas-site     # or wherever you unzipped it
-git init
-git add .
-git commit -m "Initial site"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/brothers-taquizas-site.git
-git push -u origin main
+npm install
+npm run dev
 ```
 
-It'll ask you to log in to GitHub the first time. Done — refresh your GitHub repo page and all the files will be there.
+## Editing content
 
-### Step 6 — Set up the catering form (Formspree)
+Everything lives in **`lib/content.ts`** — pricing, testimonials, FAQs, images, contact info. Edit, save, push. Vercel auto-deploys.
 
-The catering form needs a backend to actually send emails. Use **Formspree** (free for 50 submissions/month, plenty for a food truck):
+## Key structure
 
-1. Go to https://formspree.io/register and sign up
-2. Click **New Form**
-3. Form name: `Catering Inquiries`
-4. Email: `info@brotherstaquizas.com` (where you want inquiries sent)
-5. Click **Create Form**
-6. Copy the **form endpoint URL** — it looks like `https://formspree.io/f/abcdwxyz`
-7. Open `index.html` in any text editor (TextEdit, Notepad, VS Code — anything)
-8. Find this line:
-   ```
-   action="https://formspree.io/f/FORM_ID"
-   ```
-9. Replace `FORM_ID` with just the ID part (e.g. `abcdwxyz`) — so it becomes:
-   ```
-   action="https://formspree.io/f/abcdwxyz"
-   ```
-10. Save the file
-
-Then push the change to GitHub:
-```bash
-git add index.html
-git commit -m "Add Formspree form ID"
-git push
-```
-
-### Step 7 — Deploy to Vercel
-
-1. Go to https://vercel.com/new
-2. Click **Import** next to your `brothers-taquizas-site` repo
-3. Leave all settings as default — Vercel auto-detects it's a static site
-4. Click **Deploy**
-
-About 30 seconds later you'll get a live URL like `brothers-taquizas-site.vercel.app`. The site is live.
-
-### Step 8 — Hook up brotherstaquizas.com
-
-1. In Vercel, open your project → **Settings → Domains**
-2. Type `brotherstaquizas.com` and click **Add**
-3. Vercel shows you DNS records to add — go to wherever your domain is registered (GoDaddy / Namecheap / Cloudflare / etc.) and add them
-4. Also add `www.brotherstaquizas.com` and let Vercel redirect it to the apex
-5. **Important:** First go to your old Shopify admin and remove the custom domain from there so Shopify releases it
-6. DNS usually propagates in 5–60 minutes. Vercel auto-issues a free SSL certificate
-
-You're done.
-
----
-
-## How to edit the site after launch
-
-The whole point of this setup: every change becomes one Git commit, and Vercel deploys it automatically within seconds. No more "Shopify edit code → save → wait".
-
-**To change anything — text, image, layout — just:**
-
-1. Open the file (`index.html` for text/structure, `styles.css` for colors/spacing, `script.js` for behavior) in any text editor
-2. Make your edit
-3. Save
-4. In Terminal:
-   ```bash
-   cd ~/Desktop/brothers-taquizas-site
-   git add .
-   git commit -m "Updated catering bullets"
-   git push
-   ```
-5. Vercel detects the push and redeploys in ~10 seconds
-
-Or, even easier — edit files **directly on GitHub.com** (click the pencil icon next to any file). Vercel still picks it up automatically.
-
----
-
-## Common edits — where to find what
-
-| Want to change… | Open… | Find… |
-|---|---|---|
-| Phone number | `index.html` | Cmd+F for `561-201-5724` |
-| Address | `index.html` | Cmd+F for `3707 Broadway` |
-| Hours | `index.html` | Cmd+F for `Hours of Operation` |
-| Hero headline | `index.html` | Cmd+F for `bt-hero__h1` |
-| Dish names / descriptions | `index.html` | Cmd+F for `bt-dish` |
-| FAQ questions | `index.html` | Cmd+F for `bt-faq` |
-| Catering bullets | `index.html` | Cmd+F for `bt-cater__list` |
-| Brand colors | `styles.css` | top of file — `:root` variables |
-| Fonts | `styles.css` | top of file — `--bt-font-*` variables |
-
----
+- Homepage flow: Hero → Logos → AI stats → **Pricing (3 plans)** → Stats → Process → Testimonials → Case study → Founder → FAQ → CTA
+- The 3x guarantee lives inside the Full Growth pricing card + a note under the pricing grid + the FAQ. It does NOT apply site-wide.
+- Book Call page: 15-minute call framing, Calendly embedded.
 
 ## Images
 
-All photos load from the `/images/` folder in this project. Before deploying for the first time, you need to drop the actual files in there — see [`images/README.md`](./images/README.md) for the filename list and download links to the originals.
+Local images go in `public/images/` and are referenced as `/images/filename.jpg` in `lib/content.ts`.
+Targets: hero/founder ~1000-1200px wide JPG under 200KB; logos PNG under 50KB; OG image exactly 1200x630.
 
-**To change a photo later:**
-1. Drop the new file into `/images/` with the same filename (e.g. replace `birria-taco.jpg` with a new shot)
-2. Commit and push
-3. Vercel redeploys with the new image — no HTML changes needed
+## Deploy
 
-**To add a new photo somewhere on the page:**
-1. Save it to `/images/` with a descriptive filename (e.g. `street-tacos.webp`)
-2. In `index.html`, reference it as `<img src="/images/street-tacos.webp" alt="...">`
-3. Commit and push
-
----
-
-## Need help?
-
-- **GitHub docs:** https://docs.github.com
-- **Vercel docs:** https://vercel.com/docs
-- **Formspree docs:** https://help.formspree.io
-
-The whole setup is designed so you don't need a developer for normal edits. Text changes especially — open the file, change the words, commit.
-
----
-
-## Language Switching (EN ↔ ES)
-
-The site includes a language toggle in the header (**EN / ES** pill switch). When a visitor clicks it, every piece of translatable text on the page swaps between English and Spanish. The choice is remembered across pages and future visits via localStorage. Spanish-speaking browsers (Chrome/Safari set to `es-*`) also auto-default to Spanish on first visit.
-
-### How it works
-
-- **`i18n-dict.js`** — a big JavaScript object mapping every English phrase to its Spanish translation. Edit this file to fix a translation or add a new phrase.
-- **`i18n.js`** — the runtime. Walks the DOM once on load, finds text nodes matching any key in the dictionary, and swaps them when you toggle.
-- The toggle button lives in the header (`<div class="lang-toggle">`) and its style is at the bottom of `styles.css`.
-
-### Adding a new phrase
-
-If you add new English copy somewhere on the site and want it translated:
-
-1. Open `i18n-dict.js`
-2. Add a new line inside the object:
-   ```js
-   "Your new English phrase": "Tu nueva frase en español",
-   ```
-3. Commit + push. Done.
-
-### Excluding text from translation
-
-If some text (an address, a phone number, a brand name) should never be translated, add `data-no-i18n` to that element or a parent:
-
-```html
-<p data-no-i18n>Brothers Taquizas</p>
-```
-
-The runtime skips anything under `data-no-i18n`.
-
-### Notes
-
-- The English HTML is what search engines see, so SEO is unchanged.
-- The `lang` attribute on `<html>` updates automatically (`en` or `es`) when the toggle is clicked — good for accessibility and screen readers.
-- Form placeholders, select options, and the page title/meta description also swap.
+Push to GitHub → Vercel auto-builds. Uses Next.js ^15.1.6 (patched) + React ^18.3.1 (stable).
