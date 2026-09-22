@@ -808,3 +808,27 @@ a:hover { color: var(--bt-terracotta-dark); }
   .lang-toggle { margin-right: 8px; }
   .lang-toggle button { padding: 5px 10px; font-size: 0.72rem; }
 }
+
+/* ============================================================
+   Homepage catering teaser (links to /catering)
+   ============================================================ */
+.bt-cater__ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+.bt-cater__photo {
+  display: block;
+  align-self: center;
+  border: 3px solid var(--bt-cream);
+  border-radius: 8px;
+  overflow: hidden;
+  transform: rotate(1.5deg);
+  box-shadow: 12px 12px 0 var(--bt-mustard);
+  transition: transform 0.2s ease;
+}
+.bt-cater__photo:hover { transform: rotate(0deg); }
+.bt-cater__photo img { width: 100%; height: auto; display: block; }
+.bt-faq__a a { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 600px) {
+  .bt-cater__ctas .btn { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bt-cater__photo, .bt-cater__photo:hover { transition: none; }
+}

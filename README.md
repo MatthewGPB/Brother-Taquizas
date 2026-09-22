@@ -240,3 +240,9 @@ The runtime skips anything under `data-no-i18n`.
 - The English HTML is what search engines see, so SEO is unchanged.
 - The `lang` attribute on `<html>` updates automatically (`en` or `es`) when the toggle is clicked — good for accessibility and screen readers.
 - Form placeholders, select options, and the page title/meta description also swap.
+
+---
+
+## Catering page (`/catering`)
+
+`catering/index.html` + `catering/catering.css`. The quote form posts to the same Formspree endpoint as before (`mredbpzo`) and adds catering style, start time and event location fields. The trailer photo lives at `images/catering-trailer.jpg`. New catering copy is translated in `i18n-dict.js` like everything else.
